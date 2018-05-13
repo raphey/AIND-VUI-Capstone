@@ -135,9 +135,9 @@ def bidirectional_rnn_model(input_dim, units, output_dim=29):
     print(model.summary())
     return model
 
-def final_model(input_dim, filters, kernel_size, conv_stride,
-                conv_border_mode, units, recur_layers,
-                dropout, recurrent_dropout, output_dim=29):
+def final_model(input_dim=161, filters=200, kernel_size=11, conv_stride=2,
+                conv_border_mode='valid', units=400, recur_layers=1,
+                dropout=0.2, recurrent_dropout=0.2, output_dim=29):
     """ Build a network for speech
     """
     # Main acoustic input
@@ -165,8 +165,6 @@ def final_model(input_dim, filters, kernel_size, conv_stride,
                            name='rnn_{}'.format(i + 1))(current_layer)
       # Batch normalization
       current_layer = BatchNormalization(name='bn_rnn_{}'.format(i + 1))(simp_rnn)
-
-    # Extra dro
 
     # TimeDistributed(Dense(output_dim)) layer
     time_dense = TimeDistributed(Dense(output_dim), name='time_dense')(current_layer)
