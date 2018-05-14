@@ -136,8 +136,8 @@ def bidirectional_rnn_model(input_dim, units, output_dim=29):
     return model
 
 def final_model(input_dim=161, filters=200, kernel_size=11, conv_stride=2,
-                conv_border_mode='valid', units=400, recur_layers=1,
-                dropout=0.2, recurrent_dropout=0.2, output_dim=29):
+                conv_border_mode='valid', units=200, recur_layers=2,
+                dropout=0.1, recurrent_dropout=0.1, output_dim=29):
     """ Build a network for speech
     """
     # Main acoustic input
